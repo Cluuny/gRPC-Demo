@@ -3,14 +3,18 @@ package dev.cluuny.grpc_demo;
 
 option java_multiple_files = true;
 
-service SayHelloService {
-  rpc sayHello(HelloRequest) returns (HelloResponse);
+service userService {
+  rpc getUserByCitizenId(UserServiceRequest) returns (UserObject);
 }
 
-message HelloRequest {
-  string data = 1;
+message UserServiceRequest {
+  string citizenId = 1;
 }
 
-message  HelloResponse {
-  string data = 1;
+message  UserObject {
+  int64 id = 1;
+  string name = 2;
+  string lastName = 3;
+  string citizenId = 4;
+  string birthDate = 5;
 }

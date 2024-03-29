@@ -8,7 +8,7 @@
         <version>3.2.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>dev.cluuny.grpc-demo</groupId>
+    <groupId>dev.cluuny.grpc_demo</groupId>
     <artifactId>gRPC-Demo-Client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>gRPC-Demo-Client</name>

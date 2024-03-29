@@ -7,9 +7,9 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CarDTO {
+public class CompleteCarDTO {
     private Long id;
-    private String ownerId;
+    private UserDTO owner;
     private String brand;
     private String model;
     private Integer carYear;

@@ -1,6 +1,7 @@
 package dev.cluuny.grpcdemo.grpcdemoclient.controller;
 
 import dev.cluuny.grpcdemo.grpcdemoclient.dto.CarDTO;
+import dev.cluuny.grpcdemo.grpcdemoclient.dto.CompleteCarDTO;
 import dev.cluuny.grpcdemo.grpcdemoclient.service.ICarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,8 @@ public class CarRestController {
     private final ICarService service;
 
     @GetMapping("/{ownerId}")
-    public ResponseEntity<CarDTO> getCarByOwnerId(@PathVariable Long ownerId) {
+    public ResponseEntity<List<CompleteCarDTO>> getCarByOwnerId(@PathVariable String ownerId) {
+        System.out.println("Pasa");
         return ResponseEntity.ok(service.getCarByOwnerId(ownerId));
     }
 
@@ -28,13 +30,13 @@ public class CarRestController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<CarDTO> createCar(@RequestBody CarDTO carDTO) {
+    public ResponseEntity<List<CompleteCarDTO>> createCar(@RequestBody CarDTO carDTO) {
         return ResponseEntity.ok(service.createCar(carDTO));
     }
 
     @DeleteMapping("/{ownerId}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteCarByOwnerId(@PathVariable Long ownerId) {
+    public void deleteCarByOwnerId(@PathVariable String ownerId) {
         service.deleteCarByOwnerId(ownerId);
     }
 }

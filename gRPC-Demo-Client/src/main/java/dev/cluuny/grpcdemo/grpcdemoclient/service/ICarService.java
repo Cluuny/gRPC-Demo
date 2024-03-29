@@ -1,18 +1,19 @@
 package dev.cluuny.grpcdemo.grpcdemoclient.service;
 
 import dev.cluuny.grpcdemo.grpcdemoclient.dto.CarDTO;
+import dev.cluuny.grpcdemo.grpcdemoclient.dto.CompleteCarDTO;
 import dev.cluuny.grpcdemo.grpcdemoclient.model.Car;
 
 import java.util.List;
 
 public interface ICarService {
-    CarDTO getCarByOwnerId(Long ownerId);
+    List<CompleteCarDTO> getCarByOwnerId(String ownerId);
 
     List<CarDTO> getAllCars();
 
-    CarDTO createCar(CarDTO carDTO);
+    List<CompleteCarDTO> createCar(CarDTO carDTO);
 
-    void deleteCarByOwnerId(Long ownerId);
+    void deleteCarByOwnerId(String ownerId);
 
     Car mapToEntity(CarDTO carDTO);
 

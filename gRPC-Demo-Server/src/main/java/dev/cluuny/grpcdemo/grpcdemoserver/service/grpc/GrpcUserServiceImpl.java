@@ -20,6 +20,7 @@ public class GrpcUserServiceImpl extends userServiceGrpc.userServiceImplBase {
         UserDTO user = service.getUserByCitizenId(request.getCitizenId());
 
         UserObject userObject = UserObject.newBuilder()
+                .setId(user.getId())
                 .setName(user.getName())
                 .setLastName(user.getLastName())
                 .setCitizenId(user.getCitizenId())

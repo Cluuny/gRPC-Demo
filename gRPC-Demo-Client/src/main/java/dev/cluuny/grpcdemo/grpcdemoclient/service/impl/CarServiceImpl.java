@@ -1,9 +1,11 @@
 package dev.cluuny.grpcdemo.grpcdemoclient.service.impl;
 
 import dev.cluuny.grpcdemo.grpcdemoclient.dto.CarDTO;
+import dev.cluuny.grpcdemo.grpcdemoclient.dto.CompleteCarDTO;
 import dev.cluuny.grpcdemo.grpcdemoclient.model.Car;
 import dev.cluuny.grpcdemo.grpcdemoclient.repository.ICarsRepository;
 import dev.cluuny.grpcdemo.grpcdemoclient.service.ICarService;
+import dev.cluuny.grpcdemo.grpcdemoclient.service.grpc.GrpcUserClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +16,11 @@ import java.util.List;
 public class CarServiceImpl implements ICarService {
 
     private final ICarsRepository repository;
+    private final GrpcUserClient grpcClient;
 
     @Override
-    public CarDTO getCarByOwnerId(Long ownerId) {
-        return repository.getCarByOwnerId(ownerId).map(this::mapToDTO).orElseThrow();
+    public List<CompleteCarDTO> getCarByOwnerId(String ownerId) {
+        return grpcClient.getCarByOwnerId(ownerId);
     }
 
     @Override
@@ -26,13 +29,13 @@ public class CarServiceImpl implements ICarService {
     }
 
     @Override
-    public CarDTO createCar(CarDTO carDTO) {
+    public List<CompleteCarDTO> createCar(CarDTO carDTO) {
         Car car = repository.save(this.mapToEntity(carDTO));
         return this.getCarByOwnerId(car.getOwnerId());
     }
 
     @Override
-    public void deleteCarByOwnerId(Long ownerId) {
+    public void deleteCarByOwnerId(String ownerId) {
         repository.deleteCarByOwnerId(ownerId);
     }
 

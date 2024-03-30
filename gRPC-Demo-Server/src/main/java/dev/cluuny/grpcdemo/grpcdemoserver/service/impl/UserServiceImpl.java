@@ -7,8 +7,6 @@ import dev.cluuny.grpcdemo.grpcdemoserver.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements IUserService {
@@ -19,23 +17,6 @@ public class UserServiceImpl implements IUserService {
     public UserDTO getUserByCitizenId(String citizenId) {
         User user = repository.getUserByCitizenId(citizenId).orElseThrow();
         return this.mapToDTO(user);
-    }
-
-    @Override
-    public List<UserDTO> getAllUsers() {
-        return repository.findAll().stream().map(this::mapToDTO).toList();
-    }
-
-    @Override
-    public UserDTO createUser(UserDTO userDTO) {
-        User user = this.mapToEntity(userDTO);
-        repository.save(user);
-        return repository.getUserByCitizenId(user.getCitizenId()).map(this::mapToDTO).orElseThrow();
-    }
-
-    @Override
-    public void deleteUserByCitizenId(String citizenId) {
-        repository.deleteAllByCitizenId(citizenId);
     }
 
     @Override

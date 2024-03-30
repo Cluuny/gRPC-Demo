@@ -12,6 +12,7 @@
         <module>gRPC-Demo-Interface</module>
         <module>gRPC-Demo-Server</module>
         <module>gRPC-Demo-Client</module>
+        <module>Eureka-Service-Registry</module>
     </modules>
 
     <properties>

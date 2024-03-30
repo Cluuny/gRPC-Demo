@@ -4,6 +4,9 @@ import lombok.*;
 
 import java.time.LocalDate;
 
+/**
+ * This DTO allows the construction of the data obtained through the gRPC call to the gRPC-Demo-Server.
+ */
 @Getter
 @Setter
 @Builder

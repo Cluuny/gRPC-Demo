@@ -5,6 +5,9 @@ import lombok.*;
 
 import java.time.LocalDate;
 
+/**
+ * This class defines the entity model on which user data will be recorded and obtained.
+ */
 @Getter
 @Entity
 @Setter

@@ -3,6 +3,9 @@ package dev.cluuny.grpcdemo.grpcdemoclient.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * This class defines the entity model on which car data will be recorded and obtained.
+ */
 @Getter
 @Entity
 @Setter

@@ -3,14 +3,23 @@ package dev.cluuny.grpc_demo;
 
 option java_multiple_files = true;
 
+/*
+This Service allows obtaining the User's data from the gRPC Server to any Client that needs it.
+ */
 service userService {
   rpc getUserByCitizenId(UserServiceRequest) returns (UserObject);
 }
 
+/*
+This message defines the structure to be able to make the request.
+ */
 message UserServiceRequest {
   string citizenId = 1;
 }
 
+/*
+This message defines the structure of the response from the gRPC Server.
+ */
 message  UserObject {
   int64 id = 1;
   string name = 2;

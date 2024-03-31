@@ -4,9 +4,11 @@ import dev.cluuny.grpcdemo.grpcdemoclient.dto.CarDTO;
 import dev.cluuny.grpcdemo.grpcdemoclient.dto.CompleteCarDTO;
 import dev.cluuny.grpcdemo.grpcdemoclient.service.ICarService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -42,28 +44,5 @@ public class CarRestController {
     @GetMapping("/all")
     public ResponseEntity<List<CarDTO>> getAllCars() {
         return ResponseEntity.ok(service.getAllCars());
-    }
-
-    /**
-     * This method allows the HTTP POST call to register the data of a car within the service.
-     *
-     * @param carDTO CarDTO type object that contains all the information of the vehicle to be registered.
-     * @return Object of type ResponseEntity with a list based on objects of type CompleteCarDTO.
-     */
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<List<CompleteCarDTO>> createCar(@RequestBody CarDTO carDTO) {
-        return ResponseEntity.ok(service.createCar(carDTO));
-    }
-
-    /**
-     * This method allows the HTTP DELETE call to delete the information regarding a vehicle.
-     *
-     * @param ownerId Unique identification number of the person.
-     */
-    @DeleteMapping("/{ownerId}")
-    @ResponseStatus(HttpStatus.OK)
-    public void deleteCarByOwnerId(@PathVariable String ownerId) {
-        service.deleteCarByOwnerId(ownerId);
     }
 }

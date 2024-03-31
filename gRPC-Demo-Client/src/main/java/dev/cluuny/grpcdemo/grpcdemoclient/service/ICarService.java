@@ -24,22 +24,7 @@ public interface ICarService {
      * @return List of objects of type CarDTO.
      */
     List<CarDTO> getAllCars();
-
-    /**
-     * This method allows the registration of car data.
-     *
-     * @param carDTO CarDTO with the data to be registered.
-     * @return List with an object of type CompleteCarDTO that contains the information of the newly registered car.
-     */
-    List<CompleteCarDTO> createCar(CarDTO carDTO);
-
-    /**
-     * This method allows you to delete information from those cars that belong to the registered user with their unique identification number sent as a parameter.
-     *
-     * @param ownerId Unique identification number of the person.
-     */
-    void deleteCarByOwnerId(String ownerId);
-
+    
     /**
      * This method allows transpiling the car data built on the CarDTO class to the Car class.
      *

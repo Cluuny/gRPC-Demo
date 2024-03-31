@@ -50,28 +50,6 @@ public class CarServiceImpl implements ICarService {
     }
 
     /**
-     * Implementation of the createCar method defined in the ICarService interface.
-     *
-     * @param carDTO CarDTO with the data to be registered.
-     * @return List with an object of type CompleteCarDTO that contains the information of the newly registered car.
-     */
-    @Override
-    public List<CompleteCarDTO> createCar(CarDTO carDTO) {
-        Car car = repository.save(this.mapToEntity(carDTO));
-        return this.getCarByOwnerId(car.getOwnerId());
-    }
-
-    /**
-     * Implementation of the deleteCarByOwnerId method defined in the ICarService interface.
-     *
-     * @param ownerId Unique identification number of the person.
-     */
-    @Override
-    public void deleteCarByOwnerId(String ownerId) {
-        repository.deleteCarByOwnerId(ownerId);
-    }
-
-    /**
      * Implementation of the mapToEntity method defined in the ICarService interface.
      *
      * @param carDTO Car Data built on top of the CarDTO class.
